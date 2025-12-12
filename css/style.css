@@ -2418,13 +2418,14 @@ body.dark-mode .colorlib-nav-toggle.active i::after {
     padding-left: 220px !important;
   }
 }
+
 /* Dark Mode Profile Image Handling */
 .hero-profile-slide {
   background-image: url(../images/Profile.png);
 }
 
 body.dark-mode .hero-profile-slide {
-  background-image: url(../images/profile_dark.png);
+  background-image: url(../images/Profile_Dark.png);
 }
 
 /* Dark Mode SAS Image Handling */
