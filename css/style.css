@@ -2425,7 +2425,7 @@ body.dark-mode .colorlib-nav-toggle.active i::after {
 }
 
 body.dark-mode .hero-profile-slide {
-  background-image: url(../images/Profile_Dark.png);
+  background-image: url(../images/profile_dark.png);
 }
 
 /* Dark Mode SAS Image Handling */
