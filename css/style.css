@@ -2056,7 +2056,7 @@ body.offcanvas .colorlib-nav-toggle {
 
 /* Dark Mode Variables & Overrides */
 body.dark-mode {
-  background-color: #121212;
+  background-color: #000000;
   color: #e0e0e0;
 }
 
@@ -2090,7 +2090,7 @@ body.dark-mode .colorlib-work,
 body.dark-mode .colorlib-about,
 body.dark-mode .colorlib-services,
 body.dark-mode .colorlib-contact {
-  background-color: #121212;
+  background-color: #000000;
   /* Keep sections dark */
 }
 
