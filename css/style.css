@@ -2473,3 +2473,12 @@ body.dark-mode li,
 body.dark-mode a {
   color: #ffffff !important;
 }
+
+/* Hide Custom Cursor on Mobile */
+@media screen and (max-width: 768px) {
+
+  .cursor,
+  .cursor2 {
+    display: none !important;
+  }
+}
