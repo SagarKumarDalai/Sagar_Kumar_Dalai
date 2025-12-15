@@ -7,8 +7,8 @@
 */
 
 document.addEventListener('DOMContentLoaded', function () {
-    initCosmosAnimation();
-    initCinematicText(); // New Cinematic Text
+    // initCosmosAnimation(); // Disabled as per user request to remove "Video BG"
+    initCinematicText();
     initTiltEffect();
     initCursorTrail();
     initScrollReveal();
