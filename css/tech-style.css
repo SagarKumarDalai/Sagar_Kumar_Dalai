@@ -646,6 +646,40 @@ body.dark-mode #colorlib-footer .btn {
     color: #fff !important;
 }
 
+/* Remove Glass Effect from Counters */
+#colorlib-counter .tilt-card,
+#colorlib-counter .services {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+
+/* COUNTER SECTION CLEANUP (Aggressive) */
+/* REMOVED #colorlib-counter from here to keep the background image visible */
+#colorlib-counter .overlay,
+#colorlib-counter .col-md-3,
+#colorlib-counter .animate-box,
+#colorlib-counter .tilt-card,
+#colorlib-counter .services,
+#colorlib-counter span {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+#colorlib-counter .colorlib-counter-label,
+#colorlib-counter .js-counter {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
 /* Force Hide Hamburger Menu on Desktop (The "Block Icon") */
 @media screen and (min-width: 992px) {
 
@@ -668,4 +702,98 @@ body.dark-mode #colorlib-footer .btn {
         display: none !important;
         content: none !important;
     }
+}
+
+
+/* =========================================
+   ELECTRIC CURSOR UPGRADE
+   ========================================= */
+
+/* Cursor Core - The Spark */
+.cursor {
+    width: 6px !important;
+    height: 6px !important;
+    background: #fff !important;
+    box-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 40px #00f3ff !important;
+    mix-blend-mode: screen !important;
+    z-index: 10001 !important;
+}
+
+/* Cursor Ring - The Electric Field */
+.cursor2 {
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid rgba(0, 243, 255, 0.8) !important;
+    background: rgba(0, 243, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3), inset 0 0 10px rgba(0, 243, 255, 0.3);
+    z-index: 10000 !important;
+    /* Jitter Animation for Electricity Feel */
+    animation: electric-buzz 0.15s infinite alternate !important;
+}
+
+@keyframes electric-buzz {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    25% {
+        transform: translate(-50%, -50%) scale(1.05) skewX(2deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(0.95) skewY(-2deg);
+        opacity: 0.7;
+    }
+
+    75% {
+        transform: translate(-50%, -50%) scale(1.02);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Electric Sparks Particle */
+.electric-spark {
+    position: fixed;
+    pointer-events: none;
+    background: #00f3ff;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #fff, 0 0 10px #00f3ff;
+    z-index: 9999;
+    animation: spark-fade 0.6s ease-out forwards;
+}
+
+@keyframes spark-fade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(var(--tx), var(--ty));
+    }
+}
+
+/* Magnetic Active State (Over Links) */
+.cursor.magnet {
+    transform: translate(-50%, -50%) scale(2) !important;
+    background: #ff00c1 !important;
+    /* Pink Shift on hover */
+    box-shadow: 0 0 20px #ff00c1, 0 0 40px #ff00c1 !important;
+}
+
+.cursor2.magnet {
+    border-color: #ff00c1 !important;
+    box-shadow: 0 0 20px rgba(255, 0, 193, 0.5) !important;
+    animation: electric-buzz 0.05s infinite !important;
+    /* Faster buzz on hover */
 }

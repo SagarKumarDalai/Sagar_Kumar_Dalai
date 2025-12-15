@@ -2514,11 +2514,22 @@ body.dark-mode a {
   color: #ffffff !important;
 }
 
-/* Hide Custom Cursor on Mobile */
-@media screen and (max-width: 768px) {
+/* Hide Custom Cursor on Mobile/Tablet */
+@media screen and (max-width: 991px) {
 
   .cursor,
   .cursor2 {
     display: none !important;
+  }
+}
+
+/* Hide System Cursor on Desktop */
+@media screen and (min-width: 992px) {
+
+  body,
+  a,
+  button,
+  .btn {
+    cursor: none !important;
   }
 }
