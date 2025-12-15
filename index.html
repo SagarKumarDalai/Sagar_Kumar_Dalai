@@ -89,8 +89,8 @@
 </head>
 
 <body>
-	<div class="cursor"></div>
-	<div class="cursor2"></div>
+	<!-- <div class="cursor"></div> -->
+	<!-- <div class="cursor2"></div> -->
 	<div id="colorlib-page">
 		<button id="theme-toggle" class="btn btn-primary theme-toggle"
 			style="position: fixed; top: 20px; right: 20px; z-index: 9999; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
@@ -144,13 +144,7 @@
 			<div id="colorlib-main">
 				<section id="colorlib-hero" class="js-fullheight" data-section="home">
 					<canvas id="tech-canvas"></canvas>
-					<div class="floating-icon-container">
-						<i class="fas fa-code tech-icon code"></i>
-						<i class="fas fa-database tech-icon db"></i>
-						<i class="fas fa-project-diagram tech-icon graph"></i>
-						<i class="fab fa-python tech-icon python"></i>
-						<i class="fas fa-brain tech-icon brain"></i>
-					</div>
+
 					<div class="flexslider js-fullheight">
 						<ul class="slides">
 							<li class="hero-profile-slide">
@@ -1395,7 +1389,7 @@
 
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
-	<footer style="text-align:center; padding: 20px; background: #f5f5f5;">
+	<footer id="colorlib-footer" style="text-align:center; padding: 20px;">
 		<p>&copy; 2025 Sagar Kumar Dalai. All rights reserved.</p>
 	</footer>
 
@@ -1481,6 +1475,41 @@
 	<!-- Custom Tech Animations -->
 	<script src="js/tech-animations.js"></script>
 
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Safety Nuke for Floating Icons - UPGRADED TO INTERVAL
+			// This ensures that even if they are lazy-loaded or injected later, they get removed.
+
+			function nukeIcons() {
+				const targets = document.querySelectorAll('.floating-icon-container, .tech-icon');
+				if (targets.length > 0) {
+					// console.log("Nuking found icons:", targets.length); 
+					targets.forEach(el => el.remove());
+				}
+
+				// Suspicious absolute icons check
+				const suspiciousIcons = document.querySelectorAll('.fa-brain, .fa-database, .fa-python');
+				suspiciousIcons.forEach(icon => {
+					const style = window.getComputedStyle(icon);
+					// Targeted removal: only if they seem "floating" (absolute/fixed) and NOT in the services grid
+					if ((style.position === 'absolute' || style.position === 'fixed') && !icon.closest('.services')) {
+						icon.remove();
+					}
+				});
+			}
+
+			// Run immediately
+			nukeIcons();
+
+			// Run repeatedly for 5 seconds to catch stragglers
+			let attempts = 0;
+			const interval = setInterval(() => {
+				nukeIcons();
+				attempts++;
+				if (attempts > 20) clearInterval(interval); // Stop after ~10 seconds
+			}, 500);
+		});
+	</script>
 </body>
 
 </html>
