@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     /* Deep Space Gradient */
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
@@ -22,58 +22,13 @@
 }
 
 /* 2. Floating Data Icons */
-.floating-icon-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
+/* 2. Floating Data Icons - REMOVED */
+.floating-icon-container,
 .tech-icon {
-    position: absolute;
-    font-size: 2rem;
-    color: rgba(44, 152, 240, 0.2);
-    /* Low opacity blue */
-    animation: float 6s ease-in-out infinite;
-}
-
-.tech-icon.python {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-    font-size: 3rem;
-}
-
-.tech-icon.db {
-    top: 60%;
-    left: 85%;
-    animation-delay: 2s;
-    font-size: 2.5rem;
-}
-
-.tech-icon.graph {
-    top: 80%;
-    left: 15%;
-    animation-delay: 4s;
-    font-size: 2.5rem;
-}
-
-.tech-icon.code {
-    top: 15%;
-    left: 80%;
-    animation-delay: 1s;
-    font-size: 2rem;
-}
-
-.tech-icon.brain {
-    top: 40%;
-    left: 5%;
-    animation-delay: 3s;
-    font-size: 3.5rem;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 @keyframes float {
@@ -213,7 +168,7 @@ body.dark-mode .glitch-text {
     color: #fff;
 }
 
-@'
+
 
 /* =========================================
    High-End 'Full Potential' Effects
@@ -353,8 +308,8 @@ body.dark-mode .about-desc {
     }
 }
 
-'@ -Encoding utf8
-@'
+
+
 
 /* =========================================
    Creative Overhaul: Maximum Design
@@ -434,8 +389,8 @@ body.dark-mode .about-desc {
     }
 }
 
-'@ -Encoding utf8
-@'
+
+
 
 /* =========================================
    Advanced Designer: Clean & Futuristic
@@ -477,6 +432,7 @@ body.dark-mode .about-desc {
 .tilt-card {
     background: rgba(255, 255, 255, 0.03) !important;
     backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
@@ -496,7 +452,7 @@ body.dark-mode .about-desc {
     display: none !important;
 }
 
-'@ -Encoding utf8
+
 
 
 /* Fix for About Us Spacing */
@@ -513,7 +469,7 @@ body.dark-mode .about-desc {
     /* Move text and boxes away from the left edge */
 }
 
-@'
+
 
 
 /* =========================================
@@ -567,8 +523,8 @@ body.dark-mode .about-desc {
     pointer-events: none;
 }
 
-'@ -Encoding utf8
-@'
+
+
 
 /* =========================================
    Graphics & Video Upgrade
@@ -644,4 +600,39 @@ body.dark-mode .about-desc {
     }
 }
 
-'@ -Encoding utf8
+/* Dark Mode Footer Fix */
+body.dark-mode #colorlib-footer {
+    background: #000 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #colorlib-footer .btn {
+    background: #000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+}
+
+/* Force Hide Hamburger Menu on Desktop (The "Block Icon") */
+@media screen and (min-width: 992px) {
+
+    .colorlib-nav-toggle,
+    .js-colorlib-nav-toggle {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        transform: scale(0) !important;
+    }
+
+    /* Safety: Ensure no pseudo-elements from body/page are creating blocks */
+    body::before,
+    body::after,
+    #colorlib-page::before,
+    #colorlib-page::after {
+        display: none !important;
+        content: none !important;
+    }
+}
