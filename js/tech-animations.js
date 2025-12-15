@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // initCosmosAnimation(); // Disabled as per user request to remove "Video BG"
     initCinematicText();
     initTiltEffect();
-    initCursorTrail();
+    initMagneticCursor(); // Updated to Magnetic Cursor
     initScrollReveal();
 });
 
@@ -180,7 +180,7 @@ function initTiltEffect() {
 
     // Targeted elements for tilt
     // Removed .progress-wrap to keep skill bars clean/floaty as requested
-    const targets = document.querySelectorAll('.services, .panel, .about-desc, .hire, .colorlib-counter');
+    const targets = document.querySelectorAll('.services, .panel, .about-desc, .hire');
 
     targets.forEach(card => {
         card.classList.add('tilt-card');
@@ -212,62 +212,87 @@ function initTiltEffect() {
 /* =========================================
    4. Stardust Cursor Trail
    ========================================= */
-function initCursorTrail() {
-    if (window.innerWidth < 992) return; // Disable on mobile
+/* =========================================
+   4. Futuristic Magnetic Cursor
+   ========================================= */
+function initMagneticCursor() {
+    if (window.innerWidth < 992) return; // Disable on mobile to prevent lag
 
-    const particles = [];
-    const limit = 30; // Max particles
+    const cursor = document.querySelector('.cursor');
+    const cursorRing = document.querySelector('.cursor2');
 
+    if (!cursor || !cursorRing) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let ringX = 0;
+    let ringY = 0;
+
+    // Track mouse position
     document.addEventListener('mousemove', (e) => {
-        const p = document.createElement('div');
-        p.classList.add('cursor-particle');
-        p.style.left = e.clientX + 'px';
-        p.style.top = e.clientY + 'px';
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-        // Random slight offsets for "dust" feel
-        const offsetX = (Math.random() - 0.5) * 20;
-        const offsetY = (Math.random() - 0.5) * 20;
-        p.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        // Immediate update for core dot
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
 
-        document.body.appendChild(p);
-        particles.push({
-            el: p,
-            x: e.clientX,
-            y: e.clientY,
-            vx: (Math.random() - 0.5) * 2,
-            vy: (Math.random() - 0.5) * 2,
-            life: 1
-        });
-
-        if (particles.length > limit) {
-            particles[0].el.remove();
-            particles.shift();
+        // Electric Spark Generation
+        if (Math.random() < 0.2) { // 20% chance per frame/move event
+            createSpark(mouseX, mouseY);
         }
     });
 
-    function updateParticles() {
-        for (let i = 0; i < particles.length; i++) {
-            let p = particles[i];
-            p.life -= 0.05;
-            p.el.style.opacity = p.life;
+    function createSpark(x, y) {
+        const spark = document.createElement('div');
+        spark.classList.add('electric-spark');
+        document.body.appendChild(spark);
 
-            // Physics movement
-            const currentLeft = parseFloat(p.el.style.left);
-            const currentTop = parseFloat(p.el.style.top);
-            p.el.style.left = (currentLeft + p.vx) + 'px';
-            p.el.style.top = (currentTop + p.vy) + 'px';
-            p.el.style.transform = `scale(${p.life})`;
+        spark.style.left = x + 'px';
+        spark.style.top = y + 'px';
 
-            if (p.life <= 0) {
-                p.el.remove();
-                particles.splice(i, 1);
-                i--;
-            }
-        }
-        requestAnimationFrame(updateParticles);
+        // Random direction for spark
+        const tx = (Math.random() - 0.5) * 50 + 'px'; // -25px to +25px
+        const ty = (Math.random() - 0.5) * 50 + 'px';
+
+        spark.style.setProperty('--tx', tx);
+        spark.style.setProperty('--ty', ty);
+
+        // Cleanup
+        setTimeout(() => {
+            spark.remove();
+        }, 600);
     }
-    updateParticles();
+
+    // Smooth physics loop for the ring
+    function animateRing() {
+        // Linear interpolation (Lerp) for delay
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+
+        cursorRing.style.left = ringX + 'px';
+        cursorRing.style.top = ringY + 'px';
+
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Magnetic Snapping Logic
+    const targets = document.querySelectorAll('a, button, .btn, .services, .project');
+
+    targets.forEach(target => {
+        target.addEventListener('mouseenter', () => {
+            cursor.classList.add('magnet');
+            cursorRing.classList.add('magnet');
+        });
+
+        target.addEventListener('mouseleave', () => {
+            cursor.classList.remove('magnet');
+            cursorRing.classList.remove('magnet');
+        });
+    });
 }
+
 
 /* =========================================
    5. Smooth Scroll Reveal (Intersection Observer)
