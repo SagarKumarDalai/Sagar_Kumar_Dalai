@@ -76,6 +76,7 @@
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tech-style.css">
 	<meta name="google-site-verification" content="5wgV9ReO7BYWIocOA_EuwuSrTWlmexAn9Rjes9QyWxY" />
 
 	<!-- Modernizr JS -->
@@ -142,6 +143,14 @@
 
 			<div id="colorlib-main">
 				<section id="colorlib-hero" class="js-fullheight" data-section="home">
+					<canvas id="tech-canvas"></canvas>
+					<div class="floating-icon-container">
+						<i class="fas fa-code tech-icon code"></i>
+						<i class="fas fa-database tech-icon db"></i>
+						<i class="fas fa-project-diagram tech-icon graph"></i>
+						<i class="fab fa-python tech-icon python"></i>
+						<i class="fas fa-brain tech-icon brain"></i>
+					</div>
 					<div class="flexslider js-fullheight">
 						<ul class="slides">
 							<li class="hero-profile-slide">
@@ -196,6 +205,7 @@
 					</div>
 				</section>
 
+				<div class="tech-divider"></div>
 				<section class="colorlib-about" data-section="about">
 					<div class="colorlib-narrow-content">
 						<div class="row">
@@ -203,7 +213,7 @@
 								<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
 									<div class="col-md-12">
 										<div class="about-desc">
-											<span class="heading-meta">About Us</span>
+											<span class="heading-meta">About Me</span>
 											<h2 class="colorlib-heading">Who Am I?</h2>
 											<p><strong>Hi I'm Sagar Kumar Dalai</strong> I am a data analyst with a
 												strong passion for transforming raw data into meaningful insights.</p>
@@ -264,6 +274,7 @@
 
 
 
+				<div class="tech-divider"></div>
 				<section class="colorlib-services" data-section="services">
 					<div class="colorlib-narrow-content">
 						<div class="row">
@@ -451,6 +462,7 @@
 					</div>
 				</div>
 
+				<div class="tech-divider"></div>
 				<section class="colorlib-skills" data-section="skills">
 					<div class="colorlib-narrow-content">
 						<div class="row">
@@ -578,6 +590,7 @@
 					</div>
 				</section>
 
+				<div class="tech-divider"></div>
 				<section class="colorlib-experience" data-section="Work Experience">
 					<div class="colorlib-narrow-content">
 						<div class="row">
@@ -657,6 +670,7 @@
 					</div>
 				</section>
 
+				<div class="tech-divider"></div>
 				<section class="colorlib-education" data-section="education">
 					<div class="colorlib-narrow-content">
 						<div class="row">
@@ -1464,6 +1478,9 @@
 			}
 		});
 	</script>
+	<!-- Custom Tech Animations -->
+	<script src="js/tech-animations.js"></script>
+
 </body>
 
 </html>
