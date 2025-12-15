@@ -89,8 +89,8 @@
 </head>
 
 <body>
-	<!-- <div class="cursor"></div> -->
-	<!-- <div class="cursor2"></div> -->
+	<div class="cursor"></div>
+	<div class="cursor2"></div>
 	<div id="colorlib-page">
 		<button id="theme-toggle" class="btn btn-primary theme-toggle"
 			style="position: fixed; top: 20px; right: 20px; z-index: 9999; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
@@ -1427,7 +1427,8 @@
 					});
 				}
 
-				// --- Cursor (Passive) ---
+				// --- Cursor (Passive) - REMOVED to use tech-animations.js instead ---
+				/*
 				var cursor = document.querySelector('.cursor');
 				var cursor2 = document.querySelector('.cursor2');
 
@@ -1467,6 +1468,7 @@
 						});
 					});
 				}
+				*/
 			} catch (err) {
 				console.error("Critical Error in Inline Script:", err);
 			}
