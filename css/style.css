@@ -353,7 +353,8 @@ figure figcaption {
 @media screen and (max-width: 768px) {
   #colorlib-hero .flexslider .flex-control-nav {
     right: 20px;
-    top: 100px;
+    top: auto;
+    bottom: 40px;
   }
 }
 
